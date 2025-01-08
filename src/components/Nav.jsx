@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
     const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
@@ -19,10 +20,10 @@ const Nav = () => {
                     <a className="btn btn-ghost gap-0 text-secondary normal-case text-2xl">Byte<span className="text-primary">Blaze</span></a>
                 </div>
                 <div className="flex-none">
-                    <ul className="menu menu-horizontal px-1">
-                        <li><a className="font-bold">Home</a></li>
-                        <li><a className="font-bold text-primary">Blogs</a></li>
-                        <li><a className="font-bold">Bookmarks</a></li>
+                    <ul className="menu menu-horizontal gap-4">
+                        <NavLink to="/" className={({ isActive }) => isActive ? 'text-primary font-bold border px-1 rounded-sm pb-1' : 'font-bold'}>Home</NavLink>
+                        <NavLink to="/blogs" className={({ isActive }) => isActive ? 'text-primary font-bold border px-1 rounded-sm pb-1' : 'font-bold'}>Blogs</NavLink>
+                        <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-primary font-bold border px-1 rounded-sm pb-1' : 'font-bold'}>Bookmarks</NavLink>
                     </ul>
                     <label className="grid cursor-pointer place-items-center">
                         <input
