@@ -5,10 +5,9 @@ import rehypeRaw from "rehype-raw";
 
 const Content = () => {
     const blog = useLoaderData();
-    const { title, cover_image, tags, body_html } = blog;
-    console.log(body_html)
+    const { title, cover_image, tags, body_html, url } = blog;
     return (
-        <div className="hover:bg-base-200 border-2 p-2 border-opacity-30 duration-200 group hover:no-underline focus:no-underline rounded">
+        <div className="overflow-auto hover:bg-base-200 border-2 p-2 border-opacity-30 duration-200 group hover:no-underline focus:no-underline rounded">
             <img role="presentation" className="object-cover w-full rounded h-44" src={cover_image || imagePlaceHolder} />
             <div>
                 <div className="flex flex-wrap py-6 gap-2 border-t border-dashed border-gray-400 dark:border-gray-600">
@@ -18,7 +17,7 @@ const Content = () => {
                 </div>
             </div>
             <div className="">
-                <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{title}</h3>
+                <a href={url} target="_blank" className="text-2xl font-semibold group-hover:underline group-focus:underline">{title}</a>
                 {/* https://www.npmjs.com/package/react-markdown?activeTab=readme */}
                 {/* https://www.npmjs.com/package/rehype-raw */}
                 <Markdown rehypePlugins={[rehypeRaw]}>{body_html}</Markdown>
